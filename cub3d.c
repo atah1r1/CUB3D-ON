@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/10/25 17:55:42 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/10/25 18:33:18 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,9 @@ int		main(int argc, char **argv)
     initialize_player();
     g_data->ptr = mlx_init();
     g_data->win = mlx_new_window(g_data->ptr, g_data->w_width, g_data->w_height, "Cub3d By atah1r1");
+    //g_data->win = mlx_new_window(g_data->ptr, g_data->w_width, g_data->w_height, "Cub3d By atah1r1"); // map_2d
     handling_textures();
-    // if(!(g_data->image = mlx_new_image(g_data->ptr, WINDOW_WIDTH_D, WINDOW_HEIGHT_D)))
+    // if(!(g_data->image = mlx_new_image(g_data->ptr, 1600, 900)))
     //     return (0);
     g_data->image3d = mlx_new_image(g_data->ptr, g_data->w_width, g_data->w_height);
     // if (!(g_data->matrix = (int*)mlx_get_data_addr(g_data->image, &g_data->bits_per_pixel, &g_data->size_line, &g_data->endian)))

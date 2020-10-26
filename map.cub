@@ -1,8 +1,8 @@
 R 1600 900
-NO ./1.xpm
+NO ./0.xpm
 SO ./1.xpm
-WE ./0.xpm
-EA ./0.xpm
+WE ./2.xpm
+EA ./3.xpm
 S ./1337.xpm
 F 254,161,77
 C 10,151,176
