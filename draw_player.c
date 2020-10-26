@@ -6,16 +6,16 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 14:19:49 by atahiri           #+#    #+#             */
-/*   Updated: 2020/10/26 13:33:36 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/10/26 14:13:29 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void draw_player()
-{
-    mlx_pixel_put(g_data->ptr, g_data->win, g_player->x, g_player->y, 0xFF2D00);
-}
+// void draw_player()
+// {
+//     mlx_pixel_put(g_data->ptr, g_data->win, g_player->x, g_player->y, 0xFF2D00);
+// }
 
 void    move_player()
 {
@@ -31,5 +31,5 @@ void    move_player()
         g_player->x = nx;
     if (!(wall_check(g_player->x, ny)))
         g_player->y = ny;
-    draw_player();
+    //draw_player();
 }

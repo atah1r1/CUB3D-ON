@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 23:27:50 by atahiri           #+#    #+#             */
-/*   Updated: 2020/10/26 13:38:16 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/10/26 14:15:30 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,64 +41,64 @@ int    wall_check(float x, float y)
         return 1;
     map_x = floorf(x / TILE_SIZE);
     map_y = floorf(y / TILE_SIZE);
-    return (0);
+    return (g_data->map[map_x].row[map_y]);
 }
 
-void    draw_squar(int x, int y, int color)
-{
-    int i;
-    int j;
+// void    draw_squar(int x, int y, int color)
+// {
+//     int i;
+//     int j;
 
-    j = y;
-    while (j < y + TILE_SIZE)
-    {
-        i = x;
-        while (i < x + TILE_SIZE)
-        {
-            g_data->matrix[((int)j * (112 * TILE_SIZE) + (int)i)] = color;
-            i++;
-        }
-        j++;
-    }
+//     j = y;
+//     while (j < y + TILE_SIZE)
+//     {
+//         i = x;
+//         while (i < x + TILE_SIZE)
+//         {
+//             g_data->matrix[((int)j * (112 * TILE_SIZE) + (int)i)] = color;
+//             i++;
+//         }
+//         j++;
+//     }
     
-}
+// }
 
-void    draw_map()
-{
-    int i;
-    int j;
-    int x;
-    int y;
-    int color;
+// void    draw_map()
+// {
+//     int i;
+//     int j;
+//     int x;
+//     int y;
+//     int color;
 
-    i = 0;
-    j = 0;
-    // while (j < MAP_NUM_ROWS)
-    // {
-    //     i = 0;
-    //     while (i < MAP_NUM_COLS)
-    //     {
-    //         x = i * TILE_SIZE;
-    //         y = j * TILE_SIZE;
-    //         color = map[j][i] == 1 ? 0xFFFFFF : 0x000000;
-    //         draw_squar(x, y, color);
-    //         i++;
-    //     }
-    //     j++;
-    // }
+//     i = 0;
+//     j = 0;
+//     // while (j < MAP_NUM_ROWS)
+//     // {
+//     //     i = 0;
+//     //     while (i < MAP_NUM_COLS)
+//     //     {
+//     //         x = i * TILE_SIZE;
+//     //         y = j * TILE_SIZE;
+//     //         color = map[j][i] == 1 ? 0xFFFFFF : 0x000000;
+//     //         draw_squar(x, y, color);
+//     //         i++;
+//     //     }
+//     //     j++;
+//     // }
     
-    while (j < g_data->map_height)
-    {
-        i = 0;
-        while (i < g_data->map[j].len)
-        {
-            x = i * TILE_SIZE;
-            y = j * TILE_SIZE;
-            color = g_data->map[j].row[i] == '1' ? 0xFFFFFF : 0x000000;
-            draw_squar(x, y, color);
-            i++;
-        }
-        j++;
-    }
+//     while (j < g_data->map_height)
+//     {
+//         i = 0;
+//         while (i < g_data->map[j].len)
+//         {
+//             x = i * TILE_SIZE;
+//             y = j * TILE_SIZE;
+//             color = g_data->map[j].row[i] == '1' ? 0xFFFFFF : 0x000000;
+//             draw_squar(x, y, color);
+//             i++;
+//         }
+//         j++;
+//     }
     
-}
+// }

@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/10/26 13:26:13 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/10/26 14:05:33 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void    initialize_player()
 {
     
-    g_player->x = WINDOW_WIDTH / 2;
-    g_player->y = WINDOW_HEIGHT / 2;
+    g_player->x = (112 * TILE_SIZE) / 2;
+    g_player->y = (g_data->map_height * TILE_SIZE) / 2;
     g_player->turn_d = 0;
     g_player->walk_d = 0;
     g_player->angle = (30 * RAD);
