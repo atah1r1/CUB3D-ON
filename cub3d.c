@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/10/25 18:33:18 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/10/26 13:26:13 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ int		main(int argc, char **argv)
     // printf("WE = %s\n", texture[2].path);
     // printf("EA = %s\n", texture[3].path);
     //printf("S = %s\n", texture[4].path);
-    // printf("==== %i\n", g_data->map_height);
+    //printf("==== %i\n", g_data->map_height);
     // int i = 0;
     // while (g_data->map_height > i)
     // {
-    //     printf("LEN ========= %d", g_data->map[i].len);
-    //     printf("%s\n", g_data->map[i].row);
+    //     //printf("LEN ========= %d", g_data->map[i].len);
+    //     printf("%c\n", g_data->map[i].row[1]);
     //     i++;
     // }
     initialize_player();
