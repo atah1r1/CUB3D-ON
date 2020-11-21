@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
+#    By: mac <mac@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/15 08:55:39 by atahiri           #+#    #+#              #
-#    Updated: 2020/11/21 17:49:44 by atahiri          ###   ########.fr        #
+#    Updated: 2020/11/21 23:29:11 by mac              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC = *.c gnl/*.c read_file/*.c utils/*.c
 all:$(NAME)
 
 $(NAME):
-	$(CC) -o Cub3d  -framework OpenGL -framework AppKit -l mlx $(SRC) -g
+	$(CC) -o Cub3d  -framework OpenGL -framework AppKit libmlx.a $(SRC) -g
 clean:
 	rm -rf *.o
 fclean: clean
