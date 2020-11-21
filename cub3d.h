@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/21 14:03:51 by mac              ###   ########.fr       */
+/*   Updated: 2020/11/21 17:43:53 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "minilibx/mlx.h"
+# include "mlx.h"
 # include "gnl/get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
@@ -41,18 +41,13 @@
 # define MAP_NUM_COLS 112
 # define WINDOW_WIDTH (MAP_NUM_COLS * TILE_SIZE)
 # define WINDOW_HEIGHT (MAP_NUM_ROWS * TILE_SIZE)
-// # define WINDOW_WIDTH_D 500
-// # define WINDOW_HEIGHT_D 500
 # define FOV_ANGLE (60 * RAD)
 # define WALL_STRIP_WIDTH 1
-// # define NUM_RAYS WINDOW_WIDTH_D
 # define INT_MAXX 2147483647
 
-
-
-typedef struct s_ray
+typedef struct	s_ray
 {
-    float		ray_angle;
+	float		ray_angle;
 	float		wall_hit_x;
 	float		wall_hit_y;
 	float		distance;
@@ -64,27 +59,27 @@ typedef struct s_ray
 	int			wall_hit_content;
 }				t_ray;
 
-typedef struct s_player
+typedef	struct	s_player
 {
-    float x;
-    float y;
-    int turn_d; // -1 for left , +1 for right
-    int walk_d; // -1 for back , +1 for front
-    float angle;
-    float walk_spd;
-    float turn_spd;
-}               t_player;
+	float	x;
+	float	y;
+	int		turn_d;
+	int		walk_d;
+	float	angle;
+	float	walk_spd;
+	float	turn_spd;
+}				t_player;
 
-typedef struct s_texture
+typedef struct	s_texture
 {
-	void 	*img;
-    int 	width;
-    int 	height;
+	void	*img;
+	int		width;
+	int		height;
 	char	*path;
 	int		*color;
-}			t_texture;
+}				t_texture;
 
-typedef	struct s_three_d
+typedef	struct	s_three_d
 {
 	float	cor_distance;
 	float	dis_proj_pln;
@@ -93,7 +88,7 @@ typedef	struct s_three_d
 	float	wall_bottom_px;
 }				t_three_d;
 
-typedef struct s_color
+typedef struct	s_color
 {
 	int	r;
 	int g;
@@ -110,8 +105,7 @@ typedef struct	s_sprite
 	float	dist;
 }				t_sprite;
 
-
-typedef	struct s_map
+typedef	struct	s_map
 {
 	char	*row;
 	int		len;
@@ -124,13 +118,11 @@ typedef struct	s_struct
 	int			w_height;
 	void		*ptr;
 	void		*win;
-	void		*image;
 	void		*image3d;
-	int			*matrix;
 	int			*matrix3d;
 	int			map_height;
-	t_color 	ceil;
-	t_color 	floor;
+	t_color		ceil;
+	t_color		floor;
 	t_map		*map;
 	t_sprite	*sprite;
 	int			bits_per_pixel;
@@ -142,40 +134,38 @@ typedef struct	s_struct
 t_struct	*g_data;
 t_player	*g_player;
 t_ray		*g_ray;
-t_three_d	threed;
-t_texture	texture[5];
+t_three_d	g_threed;
+t_texture	g_texture[5];
+int			g_read_nb;
 
-
-int     check_folder(char *str);
 int		ft_memcmp_zero(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int     keyrelease(int keycode);
-int     keypress(int keycode);
-void    initialize_player();
-void    draw_map();
-void    draw_squar(int x, int y, int color);
+int		keyrelease(int keycode);
+int		keypress(int keycode);
+void	initialize_player();
 void	three_d(void);
 int		loop();
-void    move_player();
-void	draw_player();
+void	move_player();
 int		wall_check(float x, float y);
-void    draw_single_ray(int strip_id);
-void    cast_rays(void);
-void    handle_rays(int strip_id);
+void	cast_rays(void);
+void	handle_rays(int strip_id);
 float	distance_between_points(float x1, float y1, float x2, float y2);
 float	normalize_angle(float angle);
-void    handling_textures();
-int     ft_read(char *file_name);
-int     set_error(char *message);
-
+void	handling_textures();
+int		ft_read(char *file_name);
+int		set_error(char *message);
+int		handle_argv(char *str);
 char	**ft_split(const char *ss, char c);
-//char	*ft_strdup(const char *str);
-
-char			*convert_to_hexa(unsigned long decimal, char c);
-static char		*convert(char *hexa, unsigned long decimal, int taille, unsigned long res);
-
-int    handle_color(t_color *color);
-
-//////////////////////////////////////////////////////
+int		handle_color(t_color *color);
+int		ft_atoi(const char *str);
+int		read_line(char *line);
+int		read_color(char *line, t_color *color);
+int		init_map(char *line);
+int		read_map_row(char *line);
+int		read_resolution(char *line);
+int		read_texture(char *line, t_texture *txt);
+int		parts_number(char **parts);
+int		parts_free(char **parts);
+int		player_pos(char *line, int y);
 
 #endif
