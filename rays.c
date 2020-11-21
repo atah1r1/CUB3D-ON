@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 11:25:22 by atahiri           #+#    #+#             */
-/*   Updated: 2020/10/22 13:34:30 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/21 14:02:21 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,6 @@ float	normalize_angle(float angle)
 	return (angle);
 }
 
-// void	draw_single_ray(int strip_id)
-// {
-// 	float	x;
-// 	float	y;
-// 	int		i;
-
-// 	i = 0;
-// 	x = g_player->x;
-// 	y = g_player->y;
-// 	while (i <= g_ray[strip_id].distance)
-// 	{
-// 		x += cosf(g_ray[strip_id].ray_angle);
-// 		y += sinf(g_ray[strip_id].ray_angle);
-// 		i++;
-// 	}
-// }
-
 void	cast_rays(void)
 {
 	int		strip_id;
@@ -55,7 +38,6 @@ void	cast_rays(void)
 	{
 		g_ray[strip_id].ray_angle = normalize_angle(ray_angle);
 		handle_rays(strip_id);
-		//draw_single_ray(strip_id);
 		ray_angle += (float)(FOV_ANGLE / g_data->w_width);
 		strip_id++;
 	}

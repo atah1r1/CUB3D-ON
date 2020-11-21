@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/10/26 13:43:01 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/21 14:03:51 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "mlx.h"
+# include "minilibx/mlx.h"
 # include "gnl/get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
@@ -37,8 +37,8 @@
 
 # define TILE_SIZE 400
 # define RAD (M_PI / 180)
-# define MAP_NUM_ROWS 14
-# define MAP_NUM_COLS 29
+# define MAP_NUM_ROWS 29
+# define MAP_NUM_COLS 112
 # define WINDOW_WIDTH (MAP_NUM_COLS * TILE_SIZE)
 # define WINDOW_HEIGHT (MAP_NUM_ROWS * TILE_SIZE)
 // # define WINDOW_WIDTH_D 500
@@ -100,29 +100,42 @@ typedef struct s_color
 	int b;
 }				t_color;
 
+typedef struct	s_sprite
+{
+	float	x;
+	float	y;
+	float	x_off;
+	float	y_off;
+	float	size;
+	float	dist;
+}				t_sprite;
+
+
 typedef	struct s_map
 {
 	char	*row;
 	int		len;
+	int		num_columns;
 }				t_map;
 
 typedef struct	s_struct
 {
-	int		w_width;
-	int		w_height;
-	void	*ptr;
-	void	*win;
-	void	*image;
-	void	*image3d;
-	int		*matrix;
-	int		*matrix3d;
-	int		map_height;
-	t_color ceil;
-	t_color floor;
-	t_map	*map;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
+	int			w_width;
+	int			w_height;
+	void		*ptr;
+	void		*win;
+	void		*image;
+	void		*image3d;
+	int			*matrix;
+	int			*matrix3d;
+	int			map_height;
+	t_color 	ceil;
+	t_color 	floor;
+	t_map		*map;
+	t_sprite	*sprite;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
 
 }				t_struct;
 
@@ -134,8 +147,6 @@ t_texture	texture[5];
 
 
 int     check_folder(char *str);
-int     handle_argv(char *str);
-//int     ft_strlen(char *str);
 int		ft_memcmp_zero(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int     keyrelease(int keycode);
@@ -156,7 +167,6 @@ float	normalize_angle(float angle);
 void    handling_textures();
 int     ft_read(char *file_name);
 int     set_error(char *message);
-char	*ft_strrev(char *str);
 
 char	**ft_split(const char *ss, char c);
 //char	*ft_strdup(const char *str);
@@ -167,10 +177,5 @@ static char		*convert(char *hexa, unsigned long decimal, int taille, unsigned lo
 int    handle_color(t_color *color);
 
 //////////////////////////////////////////////////////
-char	*ft_strcat(char *dest, char *src);
-char	ft_reverse(char *str);
-int		ft_lenint(long x);
-char	*ft_itoa(long n);
-int		concat(int a, int b);
 
 #endif

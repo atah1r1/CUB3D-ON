@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_rays.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:18:55 by atahiri           #+#    #+#             */
-/*   Updated: 2020/10/26 11:19:21 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/10/31 13:00:19 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void    handle_rays(int strip_id)
 
     // if (g_ray[strip_id].wall_facing_up)
     //     next_horz_y--;
-    while (next_horz_x >= 0 && next_horz_x <= 112 * TILE_SIZE && 
-            next_horz_y >= 0 && next_horz_y <= g_data->map_height * TILE_SIZE)
+    while (next_horz_x >= 0 && next_horz_x <= 112 * TILE_SIZE &&
+            next_horz_y >= 0 && next_horz_y <= (g_data->map_height - 1) * TILE_SIZE)
     {
         if (wall_check(next_horz_x, g_ray[strip_id].wall_facing_up ? next_horz_y - 1 : next_horz_y))
         {
@@ -108,8 +108,8 @@ void    handle_rays(int strip_id)
 
     // if (g_ray[strip_id].wall_facing_left)
     //     next_vert_x--;
-    while (next_vert_x >= 0 && next_vert_x <= 112 * TILE_SIZE && 
-            next_vert_y >= 0 && next_vert_y <= g_data->map_height * TILE_SIZE)
+    while (next_vert_x >= 0 && next_vert_x <= 112 * TILE_SIZE &&
+            next_vert_y >= 0 && next_vert_y <= (g_data->map_height - 1) * TILE_SIZE)
     {
         if (wall_check(g_ray[strip_id].wall_facing_left ? next_vert_x - 1 : next_vert_x, next_vert_y))
         {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/10/23 16:51:04 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/21 14:49:59 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,47 @@ int     init_map(char *line)
     return (SUCCESS);
 }
 
+int     line_handle(char *line, int y)
+{
+    int x = 0;
+    
+    while (x < strlen(line))
+    {
+        if (line[x] == 'N' || line[x] == 'S' || line[x] == 'W' || line[x] == 'E')
+            {
+                g_player->x = (x + 0.5F) * TILE_SIZE;
+                g_player->y = (y + 0.5F) * TILE_SIZE;
+                if (line[x] == 'N')
+                    g_player->angle = (270 * RAD);
+                else if (line[x] == 'S')
+                    g_player->angle = (90 * RAD);
+                else if (line[x] == 'W')
+                    g_player->angle = (180 * RAD);
+                else if (line[x] == 'E')
+                    g_player->angle = (0);
+            }
+        x++;
+    }
+    return 0;
+}
+
+int     sprite_handle(char *line, int y)
+{
+    int x = 0;
+
+    while (x < ft_strlen(line))
+    {
+        if (line[x] == '2')
+        {
+            g_data->sprite->x = x * TILE_SIZE;
+            g_data->sprite->y = y * TILE_SIZE;
+        }
+        x++;
+    }
+    
+    return 0;
+}
+
 int     read_map_row(char *line)
 {
     int     i = 0; // i = -1
@@ -106,6 +147,8 @@ int     read_map_row(char *line)
         g_data->map[i] = temp_map[i];
         i++;
     }
+    line_handle(line, i);
+    sprite_handle(line, i);
     g_data->map[i].row = ft_strdup(line);
     g_data->map[i].len = ft_strlen(line);
     free(line);
@@ -173,7 +216,7 @@ int     ft_read(char *file_name)
     if (handle_argv(file_name) == ERROR)
         return set_error("error");
     if ((fd = open(file_name, O_RDONLY)) < 0)
-        return set_error("error 2");
+        return set_error("error 2");   
     while (get_next_line(fd, &line) > 0)
         if (read_line(line) == ERROR)
             return (ERROR);
