@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/21 18:08:57 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/22 17:27:02 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ int		main(int argc, char **argv)
 	if (argc != 2)
 	{
 		write(1, "Error in arguments...", 22);
-		return (0);
-	}
-	if (handle_argv(argv[1]) == 2)
-	{
-		write(1, "Invalid / not Found Map file ...", 32);
 		return (0);
 	}
 	if (!(g_data = ((t_struct*)malloc(sizeof(t_struct)))))
