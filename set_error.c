@@ -6,16 +6,16 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 11:35:03 by atahiri           #+#    #+#             */
-/*   Updated: 2020/10/19 11:38:48 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/22 12:30:16 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char    *g_error;
+char	*g_error;
 
-int     set_error(char *message)
+int		set_error(char *message)
 {
-    g_error = message;
-    return(ERROR);
+	g_error = message;
+	return (ERROR);
 }

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 23:26:13 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/21 14:01:53 by mac              ###   ########.fr       */
+/*   Updated: 2020/11/22 12:29:15 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int loop()
+int		loop(void)
 {
-    move_player();
-    cast_rays();
-    three_d();
-    mlx_put_image_to_window(g_data->ptr, g_data->win, g_data->image3d, 0, 0);
-    return (0);
+	move_player();
+	cast_rays();
+	three_d();
+	mlx_put_image_to_window(g_data->ptr, g_data->win, g_data->image3d, 0, 0);
+	return (0);
 }

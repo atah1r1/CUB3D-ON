@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/21 23:26:28 by mac              ###   ########.fr       */
+/*   Updated: 2020/11/22 12:25:06 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "minilibx/mlx.h"
+# include "mlx.h"
 # include "gnl/get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
@@ -37,10 +37,6 @@
 
 # define TILE_SIZE 400
 # define RAD (M_PI / 180)
-# define MAP_NUM_ROWS 29
-# define MAP_NUM_COLS 112
-# define WINDOW_WIDTH (MAP_NUM_COLS * TILE_SIZE)
-# define WINDOW_HEIGHT (MAP_NUM_ROWS * TILE_SIZE)
 # define FOV_ANGLE (60 * RAD)
 # define WALL_STRIP_WIDTH 1
 # define INT_MAXX 2147483647
