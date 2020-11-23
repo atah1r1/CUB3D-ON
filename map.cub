@@ -1,6 +1,6 @@
 R 1600 900
 NO ./xpm/0.xpm
-SO ./xpm/1.xpm  
+SO ./xpm/1.xpm
 WE ./xpm/2.xpm
 EA ./xpm/3.xpm
 S ./xpm/1337.xpm
