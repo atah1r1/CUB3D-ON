@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/22 17:14:59 by mac              ###   ########.fr       */
+/*   Updated: 2020/11/23 09:52:33 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,10 @@ typedef	struct	s_three_d
 	float	prj_wall_h;
 	float	wall_tp_px;
 	float	wall_bottom_px;
+	float	dist_from_top;
+	int		txt_off_y;
+	int		txt_off_x;
+	int		texelcolor;
 }				t_three_d;
 
 typedef struct	s_color
