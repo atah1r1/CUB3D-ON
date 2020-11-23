@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/23 09:52:33 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/23 12:26:30 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,27 @@ typedef struct	s_ray
 	float		wall_hit_y;
 	float		distance;
 	int			hit_ver;
-	int			wall_facing_up;
-	int			wall_facing_down;
-	int			wall_facing_left;
-	int			wall_facing_right;
+	int			wall_face_up;
+	int			wall_face_down;
+	int			wall_face_left;
+	int			wall_face_right;
 	int			wall_hit_content;
+	float		x_intercept;
+	float		y_intercept;
+	float		xstep;
+	float		ystep;
+	float		next_horz_x;
+	float		next_horz_y;
+	int			found_horz_wall;
+	float		wall_horz_hit_x;
+	float		wall_horz_hit_y;
+	float		horz_hit_distance;
+	float		next_vert_x;
+	float		next_vert_y;
+	int			found_vert_wall;
+	float		wall_vert_hit_x;
+	float		wall_vert_hit_y;
+	float		vert_hit_distance;
 }				t_ray;
 
 typedef	struct	s_player
@@ -167,5 +183,6 @@ int		read_texture(char *line, t_texture *txt);
 int		parts_number(char **parts);
 int		parts_free(char **parts);
 int		player_pos(char *line, int y);
+void	initialize_rays(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 15:58:40 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/23 10:48:32 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/23 12:25:43 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int		get_tx(int i)
 {
 	int	tx;
 
-	if (!g_ray[i].hit_ver && g_ray[i].wall_facing_up)
+	if (!g_ray[i].hit_ver && g_ray[i].wall_face_up)
 		tx = 0;
-	else if (!g_ray[i].hit_ver && g_ray[i].wall_facing_down)
+	else if (!g_ray[i].hit_ver && g_ray[i].wall_face_down)
 		tx = 1;
-	else if (g_ray[i].hit_ver && g_ray[i].wall_facing_right)
+	else if (g_ray[i].hit_ver && g_ray[i].wall_face_right)
 		tx = 2;
-	else if (g_ray[i].hit_ver && g_ray[i].wall_facing_left)
+	else if (g_ray[i].hit_ver && g_ray[i].wall_face_left)
 		tx = 3;
 	return (tx);
 }

@@ -3,136 +3,113 @@
 /*                                                        :::      ::::::::   */
 /*   handle_rays.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:18:55 by atahiri           #+#    #+#             */
-/*   Updated: 2020/10/31 13:00:19 by mac              ###   ########.fr       */
+/*   Updated: 2020/11/23 12:44:53 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void    handle_rays(int strip_id)
+void	horizontal_wall_hint(int s_id)
 {
-    
-    g_ray[strip_id].ray_angle = normalize_angle(g_ray[strip_id].ray_angle);
-    g_ray[strip_id].wall_facing_down = g_ray[strip_id].ray_angle > 0 && g_ray[strip_id].ray_angle < M_PI;
-    g_ray[strip_id].wall_facing_up = !g_ray[strip_id].wall_facing_down;
-    g_ray[strip_id].wall_facing_right = g_ray[strip_id].ray_angle < 0.5 * M_PI || g_ray[strip_id].ray_angle > 1.5 * M_PI;
-    g_ray[strip_id].wall_facing_left = !g_ray[strip_id].wall_facing_right;
-    float x_intercept;
-    float y_intercept;
-    float xstep;
-    float ystep;
+	g_ray->y_intercept = floor(g_player->y / TILE_SIZE) * TILE_SIZE;
+	g_ray->y_intercept += g_ray[s_id].wall_face_down ? TILE_SIZE : 0;
+	g_ray->x_intercept = g_player->x + (g_ray->y_intercept - g_player->y) /
+		tan(g_ray[s_id].ray_angle);
+	g_ray->ystep = TILE_SIZE;
+	g_ray->ystep *= g_ray[s_id].wall_face_up ? -1 : 1;
+	g_ray->xstep = TILE_SIZE / tan(g_ray[s_id].ray_angle);
+	g_ray->xstep *= (g_ray[s_id].wall_face_left && g_ray->xstep > 0) ? -1 : 1;
+	g_ray->xstep *= (g_ray[s_id].wall_face_right && g_ray->xstep < 0) ? -1 : 1;
+	g_ray->next_horz_x = g_ray->x_intercept;
+	g_ray->next_horz_y = g_ray->y_intercept;
+	while (g_ray->next_horz_x >= 0 && g_ray->next_horz_y >= 0)
+	{
+		if (wall_check(g_ray->next_horz_x, g_ray[s_id].wall_face_up ?
+			g_ray->next_horz_y - 1 : g_ray->next_horz_y))
+		{
+			g_ray->found_horz_wall = 1;
+			g_ray->wall_horz_hit_x = g_ray->next_horz_x;
+			g_ray->wall_horz_hit_y = g_ray->next_horz_y;
+			break ;
+		}
+		g_ray->next_horz_x += g_ray->xstep;
+		g_ray->next_horz_y += g_ray->ystep;
+	}
+}
 
-    g_ray[strip_id].hit_ver = 0;
-/////////////////////////////////////////////////////////
-//// horizontal wall hint find
-////////////////////////////////////////////////////////
-    float next_horz_x;
-    float next_horz_y;
-    int found_horz_wall;
-    float wall_horz_hit_x;
-    float wall_horz_hit_y;
-    float horz_hit_distance;
+void	vertical_wall_hint(int s_id)
+{
+	g_ray->x_intercept = floor(g_player->x / TILE_SIZE) * TILE_SIZE;
+	g_ray->x_intercept += g_ray[s_id].wall_face_right ? TILE_SIZE : 0;
+	g_ray->y_intercept = g_player->y + (g_ray->x_intercept - g_player->x) *
+		tan(g_ray[s_id].ray_angle);
+	g_ray->xstep = TILE_SIZE;
+	g_ray->xstep *= g_ray[s_id].wall_face_left ? -1 : 1;
+	g_ray->ystep = TILE_SIZE * tan(g_ray[s_id].ray_angle);
+	g_ray->ystep *= (g_ray[s_id].wall_face_up && g_ray->ystep > 0) ? -1 : 1;
+	g_ray->ystep *= (g_ray[s_id].wall_face_down && g_ray->ystep < 0) ? -1 : 1;
+	g_ray->next_vert_x = g_ray->x_intercept;
+	g_ray->next_vert_y = g_ray->y_intercept;
+	while (g_ray->next_vert_x >= 0 && g_ray->next_vert_y >= 0)
+	{
+		if (wall_check(g_ray[s_id].wall_face_left ?
+			g_ray->next_vert_x - 1 : g_ray->next_vert_x, g_ray->next_vert_y))
+		{
+			g_ray->found_vert_wall = 1;
+			g_ray->wall_vert_hit_x = g_ray->next_vert_x;
+			g_ray->wall_vert_hit_y = g_ray->next_vert_y;
+			break ;
+		}
+		g_ray->next_vert_x += g_ray->xstep;
+		g_ray->next_vert_y += g_ray->ystep;
+	}
+}
 
-    found_horz_wall = 0;
-    wall_horz_hit_x = 0;
-    wall_horz_hit_y = 0;
+void	calculating_directions(int s_id)
+{
+	g_ray[s_id].ray_angle = normalize_angle(g_ray[s_id].ray_angle);
+	g_ray[s_id].wall_face_down = g_ray[s_id].ray_angle > 0 &&
+		g_ray[s_id].ray_angle < M_PI;
+	g_ray[s_id].wall_face_up = !g_ray[s_id].wall_face_down;
+	g_ray[s_id].wall_face_right = g_ray[s_id].ray_angle < 0.5 * M_PI
+		|| g_ray[s_id].ray_angle > 1.5 * M_PI;
+	g_ray[s_id].wall_face_left = !g_ray[s_id].wall_face_right;
+	g_ray[s_id].hit_ver = 0;
+}
 
-    y_intercept = floor(g_player->y / TILE_SIZE) * TILE_SIZE;
-    y_intercept += g_ray[strip_id].wall_facing_down ? TILE_SIZE : 0;
-    
-    x_intercept = g_player->x + (y_intercept - g_player->y) / tan(g_ray[strip_id].ray_angle);
+void	calculating_x_y(int s_id)
+{
+	g_ray[s_id].wall_hit_x =
+		(g_ray->horz_hit_distance < g_ray->vert_hit_distance)
+		? g_ray->wall_horz_hit_x
+		: g_ray->wall_vert_hit_x;
+	g_ray[s_id].wall_hit_y =
+		(g_ray->horz_hit_distance < g_ray->vert_hit_distance)
+		? g_ray->wall_horz_hit_y
+		: g_ray->wall_vert_hit_y;
+	g_ray[s_id].distance =
+		(g_ray->horz_hit_distance < g_ray->vert_hit_distance)
+		? g_ray->horz_hit_distance
+		: g_ray->vert_hit_distance;
+	g_ray[s_id].hit_ver = (g_ray->vert_hit_distance < g_ray->horz_hit_distance);
+}
 
-    ystep = TILE_SIZE;
-    ystep *= g_ray[strip_id].wall_facing_up ? -1 : 1;
-
-    xstep = TILE_SIZE / tan(g_ray[strip_id].ray_angle);
-    xstep *= (g_ray[strip_id].wall_facing_left && xstep > 0) ? -1 : 1;
-    xstep *= (g_ray[strip_id].wall_facing_right && xstep < 0) ? -1 : 1;
-
-    next_horz_x = x_intercept;
-    next_horz_y = y_intercept;
-
-    // if (g_ray[strip_id].wall_facing_up)
-    //     next_horz_y--;
-    while (next_horz_x >= 0 && next_horz_x <= 112 * TILE_SIZE &&
-            next_horz_y >= 0 && next_horz_y <= (g_data->map_height - 1) * TILE_SIZE)
-    {
-        if (wall_check(next_horz_x, g_ray[strip_id].wall_facing_up ? next_horz_y - 1 : next_horz_y))
-        {
-            found_horz_wall = 1;
-            wall_horz_hit_x = next_horz_x;
-            wall_horz_hit_y = next_horz_y;
-            break;
-        }
-        else
-        {
-            next_horz_x += xstep;
-            next_horz_y += ystep;
-        }
-    }
-    ////////////////////////// find distance horizontal //////////////
-    horz_hit_distance = (found_horz_wall)
-    ? distance_between_points(g_player->x, g_player->y, wall_horz_hit_x, wall_horz_hit_y) 
-    : INT_MAXX;
-/////////////////////////////////////////////////////////
-//// vertical wall hint find
-////////////////////////////////////////////////////////
-    float   next_vert_x;
-    float   next_vert_y;
-    int     found_vert_wall;
-    float   wall_vert_hit_x;
-    float   wall_vert_hit_y;
-    float   vert_hit_distance;
-
-    found_vert_wall = 0;
-    wall_vert_hit_x = 0;
-    wall_vert_hit_y = 0;
-
-    x_intercept = floor(g_player->x / TILE_SIZE) * TILE_SIZE;
-    x_intercept += g_ray[strip_id].wall_facing_right ? TILE_SIZE : 0;
-    
-    y_intercept = g_player->y + (x_intercept - g_player->x) * tan(g_ray[strip_id].ray_angle);
-
-    xstep = TILE_SIZE;
-    xstep *= g_ray[strip_id].wall_facing_left ? -1 : 1;
-
-    ystep = TILE_SIZE * tan(g_ray[strip_id].ray_angle);
-    ystep *= (g_ray[strip_id].wall_facing_up && ystep > 0) ? -1 : 1;
-    ystep *= (g_ray[strip_id].wall_facing_down && ystep < 0) ? -1 : 1;
-
-    next_vert_x = x_intercept;
-    next_vert_y = y_intercept;
-
-    // if (g_ray[strip_id].wall_facing_left)
-    //     next_vert_x--;
-    while (next_vert_x >= 0 && next_vert_x <= 112 * TILE_SIZE &&
-            next_vert_y >= 0 && next_vert_y <= (g_data->map_height - 1) * TILE_SIZE)
-    {
-        if (wall_check(g_ray[strip_id].wall_facing_left ? next_vert_x - 1 : next_vert_x, next_vert_y))
-        {
-            found_vert_wall = 1;
-            wall_vert_hit_x = next_vert_x;
-            wall_vert_hit_y = next_vert_y;
-            break;
-        }
-        else
-        {
-            next_vert_x += xstep;
-            next_vert_y += ystep;
-        }
-    }
-    ////////////////////////// find distance vertical //////////////
-
-    vert_hit_distance = (found_vert_wall)
-    ? distance_between_points(g_player->x, g_player->y, wall_vert_hit_x, wall_vert_hit_y) 
-    : INT_MAXX;
-    
-    ///////////////////////////////////////////////////////////////////////////
-    g_ray[strip_id].wall_hit_x = (horz_hit_distance < vert_hit_distance) ? wall_horz_hit_x : wall_vert_hit_x;
-    g_ray[strip_id].wall_hit_y = (horz_hit_distance < vert_hit_distance) ? wall_horz_hit_y : wall_vert_hit_y;
-    g_ray[strip_id].distance = (horz_hit_distance < vert_hit_distance) ? horz_hit_distance : vert_hit_distance;
-    g_ray[strip_id].hit_ver = (vert_hit_distance < horz_hit_distance);
+void	handle_rays(int s_id)
+{
+	initialize_rays();
+	calculating_directions(s_id);
+	horizontal_wall_hint(s_id);
+	g_ray->horz_hit_distance = (g_ray->found_horz_wall)
+	? distance_between_points(g_player->x, g_player->y,
+		g_ray->wall_horz_hit_x, g_ray->wall_horz_hit_y)
+	: INT_MAXX;
+	vertical_wall_hint(s_id);
+	g_ray->vert_hit_distance = (g_ray->found_vert_wall)
+	? distance_between_points(g_player->x, g_player->y,
+		g_ray->wall_vert_hit_x, g_ray->wall_vert_hit_y)
+	: INT_MAXX;
+	calculating_x_y(s_id);
 }
