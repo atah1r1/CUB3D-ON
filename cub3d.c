@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/23 11:14:31 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/23 16:51:04 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ void	handling_textures(void)
 	i = 0;
 	while (i <= 4)
 	{
-		g_texture[i].img = mlx_xpm_file_to_image(g_data->ptr, g_texture[i].path,
-			&g_texture[i].width, &g_texture[i].height);
+		if (!(g_texture[i].img = mlx_xpm_file_to_image(g_data->ptr, g_texture[i].path,
+			&g_texture[i].width, &g_texture[i].height)))
+			set_error("Missing/Not Found xpm !");
 		g_texture[i].color = (int*)mlx_get_data_addr(g_texture[i].img,
 			&g_data->bits_per_pixel, &g_data->size_line, &g_data->endian);
 		i++;

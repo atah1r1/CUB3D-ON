@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:04:59 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/21 17:05:51 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/23 16:39:09 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int		read_resolution(char *line)
 		return (ERROR);
 	g_data->w_width = atoi(parts[1]);
 	g_data->w_height = atoi(parts[2]);
+	if (g_data->w_width > 3200 || g_data->w_height > 1800)
+	{
+		g_data->w_width = 3200;
+		g_data->w_height = 1800;
+	}
 	++g_read_nb;
 	free(line);
 	return (parts_free(parts));
