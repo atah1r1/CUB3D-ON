@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/23 12:26:30 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/23 17:47:14 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ void	cast_rays(void);
 void	handle_rays(int strip_id);
 float	distance_between_points(float x1, float y1, float x2, float y2);
 float	normalize_angle(float angle);
-void	handling_textures();
+int		handling_textures();
 int		ft_read(char *file_name);
 int		set_error(char *message);
 int		handle_argv(char *str);
