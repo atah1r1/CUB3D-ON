@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/23 17:47:14 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/24 09:57:47 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@
 # include <stdint.h>
 
 # define ESC 53
+# define R_LEFT 123
+# define R_RIGHT 124
 # define LEFT 0
 # define RIGHT 2
 # define FORWARD 13
 # define BACKWARD 1
-# define KEYUP 3
-# define KEYDOWN 2
-# define QUIT 17
 
 # define ERROR 2
 # define SUCCESS 0
@@ -73,59 +72,60 @@ typedef struct	s_ray
 
 typedef	struct	s_player
 {
-	float	x;
-	float	y;
-	int		turn_d;
-	int		walk_d;
-	float	angle;
-	float	walk_spd;
-	float	turn_spd;
+	float		x;
+	float		y;
+	int			turn_d;
+	int			walk_d;
+	float		angle;
+	float		walk_spd;
+	float		turn_spd;
+	float		side;
 }				t_player;
 
 typedef struct	s_texture
 {
-	void	*img;
-	int		width;
-	int		height;
-	char	*path;
-	int		*color;
+	void		*img;
+	int			width;
+	int			height;
+	char		*path;
+	int			*color;
 }				t_texture;
 
 typedef	struct	s_three_d
 {
-	float	cor_distance;
-	float	dis_proj_pln;
-	float	prj_wall_h;
-	float	wall_tp_px;
-	float	wall_bottom_px;
-	float	dist_from_top;
-	int		txt_off_y;
-	int		txt_off_x;
-	int		texelcolor;
+	float		cor_distance;
+	float		dis_proj_pln;
+	float		prj_wall_h;
+	float		wall_tp_px;
+	float		wall_bottom_px;
+	float		dist_from_top;
+	int			txt_off_y;
+	int			txt_off_x;
+	int			texelcolor;
 }				t_three_d;
 
 typedef struct	s_color
 {
-	int	r;
-	int g;
-	int b;
+	int			r;
+	int			g;
+	int			b;
 }				t_color;
 
 typedef struct	s_sprite
 {
-	float	x;
-	float	y;
-	float	x_off;
-	float	y_off;
-	float	size;
-	float	dist;
+	float		x;
+	float		y;
+	float		x_off;
+	float		y_off;
+	float		size;
+	float		dist;
 }				t_sprite;
 
 typedef	struct	s_map
 {
-	char	*row;
-	int		len;
-	int		num_columns;
+	char		*row;
+	int			len;
+	int			num_columns;
 }				t_map;
 
 typedef struct	s_struct
@@ -147,12 +147,12 @@ typedef struct	s_struct
 
 }				t_struct;
 
-t_struct	*g_data;
-t_player	*g_player;
-t_ray		*g_ray;
-t_three_d	g_threed;
-t_texture	g_texture[5];
-int			g_read_nb;
+t_struct		*g_data;
+t_player		*g_player;
+t_ray			*g_ray;
+t_three_d		g_threed;
+t_texture		g_texture[5];
+int				g_read_nb;
 
 int		ft_memcmp_zero(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
