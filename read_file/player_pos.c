@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:30:36 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/24 11:13:54 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/25 14:32:55 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		player_pos(char *line, int y)
 				g_player->angle = (180 * RAD);
 			else if (line[x] == 'E')
 				g_player->angle = (0);
+			g_player_found++;
 		}
 		x++;
 	}

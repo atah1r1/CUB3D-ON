@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:46:14 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/21 17:30:17 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/25 14:36:58 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,12 @@ int		read_map_row(char *line)
 		i++;
 	}
 	player_pos(line, i);
+	if (g_player_found > 1)
+		set_error("Too many player in The map !");
 	//sprite_handle(line, i);
 	g_data->map[i].row = ft_strdup(line);
 	g_data->map[i].len = ft_strlen(line);
 	free(line);
+	free(temp_map); //++ to remove leaks
 	return (SUCCESS);
 }

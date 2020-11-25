@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 11:12:53 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/23 11:13:31 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/25 09:57:39 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void    initialize_rays(void)
 {
-    g_ray->found_horz_wall = 0;
-    g_ray->wall_horz_hit_x = 0;
-    g_ray->wall_horz_hit_y = 0;
-    g_ray->found_vert_wall = 0;
-    g_ray->wall_vert_hit_x = 0;
-    g_ray->wall_vert_hit_y = 0;
+	g_ray->found_horz_wall = 0;
+	g_ray->wall_horz_hit_x = 0;
+	g_ray->wall_horz_hit_y = 0;
+	g_ray->found_vert_wall = 0;
+	g_ray->wall_vert_hit_x = 0;
+	g_ray->wall_vert_hit_y = 0;
 }

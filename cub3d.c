@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/24 14:05:43 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/25 14:35:37 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	initialize_player(void)
 	g_player->turn_spd = 1 * RAD;
 	g_player->walk_spd = TILE_SIZE / 10;
 	g_player->side = 0;
+	g_player_found = 0;
 }
 
 int		exit_event(void)
@@ -70,6 +71,5 @@ int		main(int argc, char **argv)
 	mlx_hook(g_data->win, 17, 1L << 17, exit_event, g_data);
 	mlx_loop_hook(g_data->ptr, loop, g_data);
 	mlx_loop(g_data->ptr);
-	free(&g_read_nb);
 	return (0);
 }
