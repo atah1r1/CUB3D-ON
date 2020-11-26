@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "*.yaml": "yaml",
+        "atomic": "c",
+        "cstdlib": "c",
+        "locale": "c",
+        "ostream": "c",
+        "algorithm": "c",
+        "complex": "c",
+        "new": "c"
+    }
+}

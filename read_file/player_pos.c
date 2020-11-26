@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:30:36 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/25 14:32:55 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/26 12:06:56 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 int		player_pos(char *line, int y)
 {
-	int x;
+	size_t x;
 
 	x = 0;
-	while (x < strlen(line))
+	while (x < ft_strlen(line))
 	{
-		if (line[x] == 'N' || line[x] == 'S'
-			|| line[x] == 'W' || line[x] == 'E')
+		if (line[x] != 'N' && line[x] != 'S' && line[x] != 'W' && line[x] != 'E'
+		&& line[x] != ' ' && line[x] != '1' && line[x] != '2' && line[x] != '0')
+			set_error("Character Undefined !!");
+		if (line[x] == 'N' || line[x] == 'S' ||
+			line[x] == 'W' || line[x] == 'E')
 		{
 			g_player->x = (x + 0.5F) * TILE_SIZE;
 			g_player->y = (y + 0.5F) * TILE_SIZE;
@@ -36,5 +39,5 @@ int		player_pos(char *line, int y)
 		}
 		x++;
 	}
-	return (0);
+	return (g_player_found);
 }

@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/25 14:35:37 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/26 12:21:39 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		main(int argc, char **argv)
 	if (!(g_data->sprite = (t_sprite*)malloc(sizeof(t_sprite))))
 		return (0);
 	ft_read(argv[1]);
+	printf("read_nd === %d\n",g_read_nb);
 	initialize_player();
 	g_data->ptr = mlx_init();
 	handling_textures();

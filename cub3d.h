@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/25 14:33:26 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/25 21:00:19 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,35 +155,35 @@ t_texture		g_texture[5];
 int				g_read_nb;
 int				g_player_found;
 
-int		ft_memcmp_zero(const void *s1, const void *s2, size_t n);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		keyrelease(int keycode);
-int		keypress(int keycode);
-void	initialize_player();
-void	three_d(void);
-int		loop();
-void	move_player();
-int		wall_check(float x, float y);
-void	cast_rays(void);
-void	handle_rays(int strip_id);
-float	distance_between_points(float x1, float y1, float x2, float y2);
-float	normalize_angle(float angle);
-int		handling_textures();
-int		ft_read(char *file_name);
-int		set_error(char *message);
-int		handle_argv(char *str);
-char	**ft_split(const char *ss, char c);
-int		handle_color(t_color *color);
-int		ft_atoi(const char *str);
-int		read_line(char *line);
-int		read_color(char *line, t_color *color);
-int		init_map(char *line);
-int		read_map_row(char *line);
-int		read_resolution(char *line);
-int		read_texture(char *line, t_texture *txt);
-int		parts_number(char **parts);
-int		parts_free(char **parts);
-int		player_pos(char *line, int y);
-void	initialize_rays(void);
+int				ft_memcmp_zero(const void *s1, const void *s2, size_t n);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
+int				keyrelease(int keycode);
+int				keypress(int keycode);
+void			initialize_player();
+void			three_d(void);
+int				loop();
+void			move_player();
+int				wall_check(float x, float y);
+void			cast_rays(void);
+void			handle_rays(int strip_id);
+float			distance_between_points(float x1, float y1, float x2, float y2);
+float			normalize_angle(float angle);
+int				handling_textures();
+int				ft_read(char *file_name);
+int				set_error(char *message);
+int				handle_argv(char *str);
+char			**ft_split(const char *ss, char c);
+int				handle_color(t_color *color);
+int				ft_atoi(const char *str);
+int				read_line(char *line);
+int				read_color(char *line, t_color *color);
+int				init_map(char *line);
+int				read_map_row(char *line);
+int				read_resolution(char *line);
+int				read_texture(char *line, t_texture *txt);
+int				parts_number(char **parts);
+int				parts_free(char **parts);
+int				player_pos(char *line, int y);
+void			initialize_rays(void);
 
 #endif
