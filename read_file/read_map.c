@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:46:14 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/26 12:24:56 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/26 18:49:27 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int		read_map_row(char *line)
 		g_data->map[i] = temp_map[i];
 		i++;
 	}
-	if (player_pos(line, i) > 1)
-		set_error("Too many player in the map !");
-	if (g_player_found == 0)
-		set_error("Player not found");
-	//sprite_handle(line, i);
 	g_data->map[i].row = ft_strdup(line);
 	g_data->map[i].len = ft_strlen(line);
+	if (player_pos(line, i) > 1)
+		set_error("Too many player in the map !");
+	// if (g_player->g_player_found == 0)
+	// 	set_error("Player not found");
+	//sprite_handle(line, i);
 	free(line);
 	free(temp_map); //++ to remove leaks
 	return (SUCCESS);

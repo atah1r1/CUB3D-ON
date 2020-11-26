@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/26 12:21:39 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/26 19:28:43 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	initialize_player(void)
 	g_player->turn_spd = 1 * RAD;
 	g_player->walk_spd = TILE_SIZE / 10;
 	g_player->side = 0;
-	g_player_found = 0;
 }
 
 int		exit_event(void)
@@ -57,7 +56,6 @@ int		main(int argc, char **argv)
 	if (!(g_data->sprite = (t_sprite*)malloc(sizeof(t_sprite))))
 		return (0);
 	ft_read(argv[1]);
-	printf("read_nd === %d\n",g_read_nb);
 	initialize_player();
 	g_data->ptr = mlx_init();
 	handling_textures();

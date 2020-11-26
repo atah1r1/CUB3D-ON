@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/25 21:00:19 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/26 18:40:28 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef	struct	s_player
 	float		walk_spd;
 	float		turn_spd;
 	float		side;
+	int			g_player_found;
 }				t_player;
 
 typedef struct	s_texture
@@ -153,7 +154,6 @@ t_ray			*g_ray;
 t_three_d		g_threed;
 t_texture		g_texture[5];
 int				g_read_nb;
-int				g_player_found;
 
 int				ft_memcmp_zero(const void *s1, const void *s2, size_t n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);

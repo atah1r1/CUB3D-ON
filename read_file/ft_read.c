@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:31:58 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/26 12:42:42 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/26 18:50:13 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int		ft_read(char *file_name)
 	char	*line;
 
 	g_read_nb = 0;
-	g_data->map_height = 0;
 	if (handle_argv(file_name) == ERROR)
 		return (set_error("file doesn't have a correct format"));
 	if ((fd = open(file_name, O_RDONLY)) < 0)
@@ -59,6 +58,8 @@ int		ft_read(char *file_name)
 			return (ERROR);
 	if (read_line(line) == ERROR)
 		return (ERROR);
+	if (g_player->g_player_found == 0)
+		set_error("Player not found");
 	close(fd);
 	return (SUCCESS);
 }
