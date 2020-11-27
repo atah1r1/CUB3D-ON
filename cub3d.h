@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/26 18:40:28 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/27 12:54:20 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define SUCCESS 0
 
 # define TILE_SIZE 400
+# define S_TILE_SIZE 64
 # define RAD (M_PI / 180)
 # define FOV_ANGLE (60 * RAD)
 # define WALL_STRIP_WIDTH 1
@@ -80,7 +81,7 @@ typedef	struct	s_player
 	float		walk_spd;
 	float		turn_spd;
 	float		side;
-	int			g_player_found;
+	int			player_found;
 }				t_player;
 
 typedef struct	s_texture
@@ -141,7 +142,6 @@ typedef struct	s_struct
 	t_color		ceil;
 	t_color		floor;
 	t_map		*map;
-	t_sprite	*sprite;
 	int			bits_per_pixel;
 	int			size_line;
 	int			endian;
@@ -153,7 +153,10 @@ t_player		*g_player;
 t_ray			*g_ray;
 t_three_d		g_threed;
 t_texture		g_texture[5];
+t_sprite		*g_sprite;
 int				g_read_nb;
+int				g_num_sprites;
+int				g_sindex;
 
 int				ft_memcmp_zero(const void *s1, const void *s2, size_t n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -185,5 +188,6 @@ int				parts_number(char **parts);
 int				parts_free(char **parts);
 int				player_pos(char *line, int y);
 void			initialize_rays(void);
-
+int				num_sprites(char *line);
+void	sprite_pos();
 #endif

@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:31:58 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/26 18:50:13 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/27 10:38:48 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		ft_read(char *file_name)
 			return (ERROR);
 	if (read_line(line) == ERROR)
 		return (ERROR);
-	if (g_player->g_player_found == 0)
+	if (g_player->player_found == 0)
 		set_error("Player not found");
 	close(fd);
 	return (SUCCESS);

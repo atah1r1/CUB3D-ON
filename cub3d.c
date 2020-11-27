@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/26 19:28:43 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/27 14:41:59 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,23 @@ int		handling_textures(void)
 
 int		main(int argc, char **argv)
 {
+	g_sindex = 0;
 	if (argc != 2)
 		set_error("Error in arguments...");
 	if (!(g_data = ((t_struct*)malloc(sizeof(t_struct)))))
 		return (0);
 	if (!(g_player = (t_player*)malloc(sizeof(t_player))))
 		return (0);
-	if (!(g_data->sprite = (t_sprite*)malloc(sizeof(t_sprite))))
-		return (0);
 	ft_read(argv[1]);
+	if (!(g_sprite = (t_sprite*)malloc(sizeof(t_sprite) * g_num_sprites)))
+		return (0);
+	sprite_pos();
+	// int i = 0;
+	// while (i < g_num_sprites)
+	// {
+	// 	printf("index === %d ||X === %f || Y === %f\n", i, g_sprite[i].x, g_sprite[i].y);
+	// 	i++;
+	// }
 	initialize_player();
 	g_data->ptr = mlx_init();
 	handling_textures();
