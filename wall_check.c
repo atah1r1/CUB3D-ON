@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 23:27:50 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/23 14:24:32 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/27 19:30:39 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,23 @@ int		wall_check(float x, float y)
 		return (1);
 	if ((int)y < 0 || (map_y > g_data->map_height))
 		return (1);
-	if (g_data->map[map_y].row[map_x] == '1' ||
-		g_data->map[map_y].row[map_x] == '2')
+	if (g_data->map[map_y].row[map_x] == '1')
+		return (1);
+	return (0);
+}
+
+int		sprite_check(float x, float y)
+{
+	int map_x;
+	int map_y;
+
+	map_x = x / TILE_SIZE;
+	map_y = y / TILE_SIZE;
+	if (!(check_indices(map_x, map_y)))
+		return (1);
+	if ((int)y < 0 || (map_y > g_data->map_height))
+		return (1);
+	if (g_data->map[map_y].row[map_x] == '2')
 		return (1);
 	return (0);
 }

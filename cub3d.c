@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/27 14:41:59 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/27 20:35:50 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		handling_textures(void)
 	int i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		if (!(g_texture[i].img = mlx_xpm_file_to_image(g_data->ptr,
 			g_texture[i].path,
@@ -64,6 +64,7 @@ int		main(int argc, char **argv)
 	// 	printf("index === %d ||X === %f || Y === %f\n", i, g_sprite[i].x, g_sprite[i].y);
 	// 	i++;
 	// }
+	//printf("%s", g_texture[4].path);
 	initialize_player();
 	g_data->ptr = mlx_init();
 	handling_textures();

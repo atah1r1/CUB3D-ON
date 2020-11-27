@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop.c                                             :+:      :+:    :+:   */
+/*   normalize_sprite.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/01 23:26:13 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/27 20:29:48 by atahiri          ###   ########.fr       */
+/*   Created: 2020/11/27 18:09:45 by atahiri           #+#    #+#             */
+/*   Updated: 2020/11/27 20:47:39 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		loop(void)
+float	normalize_sprite(float angle)
 {
-	move_player();
-	cast_rays();
-	three_d();
-	draw_sprites();
-	mlx_put_image_to_window(g_data->ptr, g_data->win, g_data->image3d, 0, 0);
-	return (0);
+	while (angle - g_player->angle > M_PI)
+		angle -= 2 * M_PI;
+	while (angle - g_player->angle < -M_PI)
+		angle += 2 * M_PI;
+	return (angle);
 }

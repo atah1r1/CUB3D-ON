@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/27 12:54:20 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/27 20:34:00 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@
 # define SUCCESS 0
 
 # define TILE_SIZE 400
-# define S_TILE_SIZE 64
 # define RAD (M_PI / 180)
 # define FOV_ANGLE (60 * RAD)
+# define DEG(a)	((float)((a) * 180) / M_PI)
 # define WALL_STRIP_WIDTH 1
 # define INT_MAXX 2147483647
 
@@ -91,6 +91,8 @@ typedef struct	s_texture
 	int			height;
 	char		*path;
 	int			*color;
+
+	int			colors;				// ahahahaha
 }				t_texture;
 
 typedef	struct	s_three_d
@@ -121,6 +123,7 @@ typedef struct	s_sprite
 	float		y_off;
 	float		size;
 	float		dist;
+	float		angle;
 }				t_sprite;
 
 typedef	struct	s_map
@@ -189,5 +192,10 @@ int				parts_free(char **parts);
 int				player_pos(char *line, int y);
 void			initialize_rays(void);
 int				num_sprites(char *line);
-void	sprite_pos();
+
+void			sprite_pos(void);
+void			draw_sprites(void);
+float			normalize_sprite(float angle);
+int				check_indices(int map_x, int map_y);
+int				sprite_check(float x, float y);
 #endif

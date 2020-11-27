@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:31:58 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/27 10:38:48 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/27 18:24:23 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		read_line(char *line)
 	else if (ft_strncmp(line, "C ", 2) == 0
 		&& read_color(line, &(g_data->ceil)) == ERROR)
 		return (set_error("CIEL RGB error!"));
-	else if (((line[0] == '1' || line[0] == ' ') 
+	else if (((line[0] == '1' || line[0] == ' ')
 		&& read_map_row(line) == ERROR))
 		return (set_error("map error!"));
 	return (SUCCESS);

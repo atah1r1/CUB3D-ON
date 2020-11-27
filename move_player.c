@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 14:19:49 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/24 09:50:51 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/27 19:50:15 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	move_player(void)
 						cosf(g_player->angle + g_player->side));
 	ny = g_player->y + (g_player->walk_d * g_player->walk_spd *
 						sinf(g_player->angle + g_player->side));
-	if (!(wall_check(nx, g_player->y)))
+	if (!(wall_check(nx, g_player->y)) && !(sprite_check(nx, g_player->y)))
 		g_player->x = nx;
-	if (!(wall_check(g_player->x, ny)))
+	if (!(wall_check(g_player->x, ny)) && !(sprite_check(g_player->x, ny)))
 		g_player->y = ny;
 }
