@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:46:14 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/27 14:30:53 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/29 19:34:00 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		read_map_row(char *line)
 	t_map	*temp_map;
 
 	i = 0;
+	if (g_read_nb != 8)
+		set_error("fffff");
 	if (g_data->map == NULL)
 		return (init_map(line));
 	temp_map = g_data->map;
