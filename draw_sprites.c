@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 17:38:25 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/27 20:59:38 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/29 19:11:17 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	coloring_sprite(int offset_x, int offset_y, int x, int y)
 {
-	g_data->matrix3d[(offset_y + y) * g_data->w_width + (offset_x + x)] = g_texture[4].color[g_texture[4].colors];
+	g_data->matrix3d[(offset_y + y) * g_data->w_width + (offset_x + x)] =
+		g_texture[4].color[g_texture[4].colors];
 }
 
 void	render_sprite(int s_index, int offset_x, int offset_y)
@@ -26,18 +27,18 @@ void	render_sprite(int s_index, int offset_x, int offset_y)
 	x = -1;
 	while (++x < (int)g_sprite[s_index].size)
 	{
-		//if (offset_x + x < 0 || offset_x + x >= g_data->w_width)
-		//	continue ;
-		//if (g_ray[offset_x + x].distance <= g_sprite[s_index].dist)
-		//	continue ;
+		if (offset_x + x < 0 || offset_x + x >= g_data->w_width)
+			continue ;
+		if (g_ray[offset_x + x].distance <= g_sprite[s_index].dist)
+			continue ;
 		y = -1;
+		g_sprite->rsx = (x * ratio);
 		while (++y < (int)g_sprite[s_index].size)
 		{
-					// printf("\n");
-					// printf("cccc");
 			if (offset_y + y < 0 || offset_y + y >= g_data->w_height)
 				continue ;
-			g_texture[4].colors = ((y * ratio) * g_texture[4].width) + (x * ratio);
+			g_sprite->rsy = (y * ratio);
+			g_texture[4].colors = (g_sprite->rsy * g_texture[4].width + g_sprite->rsx);
 			if (g_texture[4].color[g_texture[4].colors] != g_texture[4].color[0])
 				coloring_sprite(offset_x, offset_y, x, y);
 		}
@@ -74,7 +75,6 @@ void	draw_sprites(void)
 
 	sp_pplane = (g_data->w_width / 2.0F) / tanf((FOV_ANGLE) / 2);
 	i = 0;
-	printf("WIDTH === %d\n HEIGHT === %d\n", g_data->w_width, g_data->w_height);
 	while (i < g_num_sprites)
 	{
 		g_sprite[i].dist = distance_between_points(g_sprite[i].x, g_sprite[i].y, g_player->x, g_player->y);

@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 10:16:03 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/27 20:33:12 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/29 18:54:18 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	sprite_pos()
     	{
 			if (g_data->map[i].row[j] == '2')
 			{
-				g_sprite[g_sindex].x = (i + 0.5F) * TILE_SIZE;
-				g_sprite[g_sindex].y = (j + 0.5F) * TILE_SIZE;
+				g_sprite[g_sindex].x = (j + 0.5F) * TILE_SIZE;
+				g_sprite[g_sindex].y = (i + 0.5F) * TILE_SIZE;
 				g_sindex++;
 			}
 			j++;

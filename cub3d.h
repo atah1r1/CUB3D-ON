@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/27 20:34:00 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/29 17:55:41 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,9 @@ typedef struct	s_sprite
 	float		size;
 	float		dist;
 	float		angle;
+
+	int			rsx;
+	int			rsy;
 }				t_sprite;
 
 typedef	struct	s_map

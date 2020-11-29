@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:31:58 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/27 18:24:23 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/29 17:17:53 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ int		read_line(char *line)
 		return (set_error("resolution error!"));
 	else if (ft_strncmp(line, "NO", 2) == 0
 		&& read_texture(line, &g_texture[0]) == ERROR)
-		return (set_error("NO error!"));
+		return (set_error("NORTH error!"));
 	else if (ft_strncmp(line, "SO", 2) == 0
 		&& read_texture(line, &g_texture[1]) == ERROR)
-		return (set_error("SO error!"));
+		return (set_error("SOUTH error!"));
 	else if (ft_strncmp(line, "WE", 2) == 0
 		&& read_texture(line, &g_texture[3]) == ERROR)
-		return (set_error("WE error!"));
+		return (set_error("WEST error!"));
 	else if (ft_strncmp(line, "EA", 2) == 0
 		&& read_texture(line, &g_texture[2]) == ERROR)
-		return (set_error("EA error!"));
+		return (set_error("EAST error!"));
 	else if (ft_strncmp(line, "S ", 2) == 0
 		&& read_texture(line, &g_texture[4]) == ERROR)
 		return (set_error("SPRITE error!"));
