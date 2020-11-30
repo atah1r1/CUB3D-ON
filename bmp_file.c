@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 12:10:29 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/30 14:56:38 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/30 14:59:55 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	screen_data(int x)
 {
 	int index;
 
-	index = g_bitmap.row *  + g_bitmap.col;
+	index = g_bitmap.row * g_data->w_width + g_bitmap.col;
 	index = index < 0 ? index * (-1) : index;
 	color_converter((uint32_t)g_data->matrix3d[index]);
 	g_bitmap.buf[x * g_bitmap.width_in_pxl
