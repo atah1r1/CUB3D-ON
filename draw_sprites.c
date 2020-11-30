@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 17:38:25 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/29 19:11:17 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/30 11:37:28 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ void	render_sprite(int s_index, int offset_x, int offset_y)
 			if (offset_y + y < 0 || offset_y + y >= g_data->w_height)
 				continue ;
 			g_sprite->rsy = (y * ratio);
-			g_texture[4].colors = (g_sprite->rsy * g_texture[4].width + g_sprite->rsx);
-			if (g_texture[4].color[g_texture[4].colors] != g_texture[4].color[0])
+			g_texture[4].colors =
+			(g_sprite->rsy * g_texture[4].width + g_sprite->rsx);
+			if (g_texture[4].color[g_texture[4].colors]
+											!= g_texture[4].color[0])
 				coloring_sprite(offset_x, offset_y, x, y);
 		}
 	}
@@ -77,12 +79,17 @@ void	draw_sprites(void)
 	i = 0;
 	while (i < g_num_sprites)
 	{
-		g_sprite[i].dist = distance_between_points(g_sprite[i].x, g_sprite[i].y, g_player->x, g_player->y);
-		g_sprite[i].angle = atan2f(g_sprite[i].y - g_player->y, g_sprite[i].x - g_player->x);
+		g_sprite[i].dist = distance_between_points(g_sprite[i].x, g_sprite[i].y,
+			g_player->x, g_player->y);
+		g_sprite[i].angle =
+		atan2f(g_sprite[i].y - g_player->y, g_sprite[i].x - g_player->x);
 		g_sprite[i].angle = normalize_sprite(g_sprite[i].angle);
 		g_sprite[i].size = (TILE_SIZE / g_sprite[i].dist * sp_pplane);
 		g_sprite[i].y_off = (g_data->w_height / 2.0F) - (g_sprite[i].size / 2);
-		g_sprite[i].x_off = (((DEG(g_sprite[i].angle) - DEG(g_player->angle)) * g_data->w_width) / (g_texture[4].width) + ((g_data->w_width / 2.0F) - (g_sprite[i].size / 2)));
+		g_sprite[i].x_off =
+			(((DEG(g_sprite[i].angle) - DEG(g_player->angle)) * g_data->w_width)
+			/ (g_texture[4].width) +
+			((g_data->w_width / 2.0F) - (g_sprite[i].size / 2)));
 		i++;
 	}
 	sort_sprites();

@@ -6,11 +6,20 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/29 18:51:22 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/30 14:43:52 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int		allocate_struct(void)
+{
+	if (!(g_data = ((t_struct*)malloc(sizeof(t_struct)))))
+		return (0);
+	if (!(g_player = (t_player*)malloc(sizeof(t_player))))
+		return (0);
+	return (0);
+}
 
 void	initialize_player(void)
 {
@@ -48,23 +57,15 @@ int		handling_textures(void)
 int		main(int argc, char **argv)
 {
 	g_sindex = 0;
-	if (argc != 2)
-		set_error("Error in arguments...");
-	if (!(g_data = ((t_struct*)malloc(sizeof(t_struct)))))
-		return (0);
-	if (!(g_player = (t_player*)malloc(sizeof(t_player))))
-		return (0);
+	if (argc == 3)
+		save_found = 1;
+	// if (argc != 2)
+	// 	set_error("Error in arguments...");
+	allocate_struct();
 	ft_read(argv[1]);
 	if (!(g_sprite = (t_sprite*)malloc(sizeof(t_sprite) * g_num_sprites)))
 		return (0);
 	sprite_pos();
-	// int i = 0;
-	// while (i < g_num_sprites)
-	// {
-	// 	printf("index === %d ||X === %f || Y === %f\n", i, g_sprite[i].x, g_sprite[i].y);
-	// 	i++;
-	// }
-	//printf("%s", g_texture[4].path);
 	initialize_player();
 	g_data->ptr = mlx_init();
 	handling_textures();

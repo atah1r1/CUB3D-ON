@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/29 17:55:41 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/30 14:54:49 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,21 @@ typedef struct	s_ray
 	float		vert_hit_distance;
 }				t_ray;
 
+typedef struct			s_bitmap
+{
+	uint16_t			bit_per_pxl;
+	int					width_in_pxl;
+	uint32_t			info_header_size;
+	uint32_t			image_size;
+	uint32_t			bf_off_bits;
+	uint32_t			file_size;
+	uint16_t			biplanes;
+	unsigned char		*buf;
+	int					fd;
+	int					row;
+	int					col;
+}						t_bitmap;
+
 typedef	struct	s_player
 {
 	float		x;
@@ -92,7 +107,7 @@ typedef struct	s_texture
 	char		*path;
 	int			*color;
 
-	int			colors;				// ahahahaha
+	int			colors;
 }				t_texture;
 
 typedef	struct	s_three_d
@@ -154,15 +169,26 @@ typedef struct	s_struct
 
 }				t_struct;
 
+typedef struct	s_bmp_rgb
+{
+	int			r;
+	int			g;
+	int			b;
+}				t_bmp_rgb;
+
+
 t_struct		*g_data;
+t_bmp_rgb		*g_bmp_rgb;
 t_player		*g_player;
 t_ray			*g_ray;
 t_three_d		g_threed;
 t_texture		g_texture[5];
 t_sprite		*g_sprite;
+t_bitmap		g_bitmap;
 int				g_read_nb;
 int				g_num_sprites;
 int				g_sindex;
+int				save_found;
 
 int				ft_memcmp_zero(const void *s1, const void *s2, size_t n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -201,4 +227,8 @@ void			draw_sprites(void);
 float			normalize_sprite(float angle);
 int				check_indices(int map_x, int map_y);
 int				sprite_check(float x, float y);
+
+void			*ft_memset(void *str, int c, size_t n);
+void			*ft_memcpy(void *dest, const void *src, size_t n);
+int				bmp_file(void);
 #endif

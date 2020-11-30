@@ -6,13 +6,13 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 11:12:53 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/25 09:57:39 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/30 11:39:51 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void    initialize_rays(void)
+void	initialize_rays(void)
 {
 	g_ray->found_horz_wall = 0;
 	g_ray->wall_horz_hit_x = 0;

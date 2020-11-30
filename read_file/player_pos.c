@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:30:36 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/27 10:38:09 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/30 11:44:13 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int		player_pos(char *line, int y)
 {
 	size_t x;
 
-	x = 0;
-	while (x < ft_strlen(line))
+	x = -1;
+	while (++x < ft_strlen(line))
 	{
 		if (line[x] != 'N' && line[x] != 'S' && line[x] != 'W' && line[x] != 'E'
 		&& line[x] != ' ' && line[x] != '1' && line[x] != '2' && line[x] != '0')
@@ -37,7 +37,6 @@ int		player_pos(char *line, int y)
 				g_player->angle = (0);
 			g_player->player_found++;
 		}
-		x++;
 	}
 	return (g_player->player_found);
 }
