@@ -6,17 +6,20 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/30 14:43:52 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/01 14:55:54 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		allocate_struct(void)
+int		allocate_struct(char *argv)
 {
 	if (!(g_data = ((t_struct*)malloc(sizeof(t_struct)))))
 		return (0);
 	if (!(g_player = (t_player*)malloc(sizeof(t_player))))
+		return (0);
+	ft_read(argv);
+	if (!(g_sprite = (t_sprite*)malloc(sizeof(t_sprite) * g_num_sprites)))
 		return (0);
 	return (0);
 }
@@ -36,49 +39,46 @@ int		exit_event(void)
 	return (0);
 }
 
-int		handling_textures(void)
+int		start_program(char *argv)
 {
-	int i;
-
-	i = 0;
-	while (i < 5)
-	{
-		if (!(g_texture[i].img = mlx_xpm_file_to_image(g_data->ptr,
-			g_texture[i].path,
-			&g_texture[i].width, &g_texture[i].height)))
-			set_error("Invalid/Missing xpm file !");
-		g_texture[i].color = (int*)mlx_get_data_addr(g_texture[i].img,
+	allocate_struct(argv);
+	sprite_pos();
+	initialize_player();
+	g_data->ptr = mlx_init();
+	handling_textures();
+	g_data->win = mlx_new_window(g_data->ptr, g_data->w_width,
+			g_data->w_height, "Cub3d");
+	g_data->image3d = mlx_new_image(g_data->ptr, g_data->w_width,
+			g_data->w_height);
+	g_data->matrix3d = (int*)mlx_get_data_addr(g_data->image3d,
 			&g_data->bits_per_pixel, &g_data->size_line, &g_data->endian);
-		i++;
-	}
+	mlx_hook(g_data->win, 2, 0, keypress, g_player);
+	mlx_hook(g_data->win, 3, 0, keyrelease, g_player);
+	mlx_hook(g_data->win, 17, 1L << 17, exit_event, g_data);
+	mlx_loop_hook(g_data->ptr, loop, g_data);
+	mlx_loop(g_data->ptr);
 	return (0);
 }
 
 int		main(int argc, char **argv)
 {
 	g_sindex = 0;
-	if (argc == 3)
-		save_found = 1;
-	// if (argc != 2)
-	// 	set_error("Error in arguments...");
-	allocate_struct();
-	ft_read(argv[1]);
-	if (!(g_sprite = (t_sprite*)malloc(sizeof(t_sprite) * g_num_sprites)))
-		return (0);
-	sprite_pos();
-	initialize_player();
-	g_data->ptr = mlx_init();
-	handling_textures();
-	g_data->win = mlx_new_window(g_data->ptr, g_data->w_width,
-				g_data->w_height, "Cub3d");
-	g_data->image3d = mlx_new_image(g_data->ptr, g_data->w_width,
-				g_data->w_height);
-	g_data->matrix3d = (int*)mlx_get_data_addr(g_data->image3d,
-				&g_data->bits_per_pixel, &g_data->size_line, &g_data->endian);
-	mlx_hook(g_data->win, 2, 0, keypress, g_player);
-	mlx_hook(g_data->win, 3, 0, keyrelease, g_player);
-	mlx_hook(g_data->win, 17, 1L << 17, exit_event, g_data);
-	mlx_loop_hook(g_data->ptr, loop, g_data);
-	mlx_loop(g_data->ptr);
+	if (argc == 2 || argc == 3)
+	{
+		if (argc == 3)
+		{
+			if (handle_save_arg(argv[2]) == SUCCESS)
+			{
+				save_found = 1;
+				start_program(argv[1]);
+			}
+			else
+				set_error("Error on third argument...");
+		}
+		if (argc == 2)
+			start_program(argv[1]);
+	}
+	else
+		set_error("Error in arguments...");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 10:16:03 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/29 18:54:18 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/11/30 17:15:44 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,17 @@ int		num_sprites(char *line)
 	return (0);
 }
 
-void	sprite_pos()
+void	sprite_pos(void)
 {
-
-	int i = 0;
+	int i;
 	int j;
+
+	i = 0;
 	while (g_data->map_height > i)
 	{
 		j = 0;
 		while (j < g_data->map[i].len)
-    	{
+		{
 			if (g_data->map[i].row[j] == '2')
 			{
 				g_sprite[g_sindex].x = (j + 0.5F) * TILE_SIZE;

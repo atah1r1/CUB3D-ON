@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/30 14:54:49 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/01 12:04:49 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,6 +221,7 @@ int				parts_free(char **parts);
 int				player_pos(char *line, int y);
 void			initialize_rays(void);
 int				num_sprites(char *line);
+int				handling_textures(void);
 
 void			sprite_pos(void);
 void			draw_sprites(void);
@@ -231,4 +232,5 @@ int				sprite_check(float x, float y);
 void			*ft_memset(void *str, int c, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
 int				bmp_file(void);
+int				handle_save_arg(char *str);
 #endif
