@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_argv.c                                      :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/21 16:11:24 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/01 17:08:15 by atahiri          ###   ########.fr       */
+/*   Created: 2020/12/01 17:07:40 by atahiri           #+#    #+#             */
+/*   Updated: 2020/12/01 17:08:41 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./cub3d.h"
+#include "../cub3d.h"
 
-int		handle_argv(char *str)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int len;
+	int i;
 
-	len = ft_strlen(str);
-	if (ft_strncmp(str + (len - 4), ".cub", 4))
-		return (ERROR);
-	return (SUCCESS);
-}
-
-int		handle_save_arg(char *str)
-{
-	if (ft_strcmp(str, "--save"))
-		return (ERROR);
-	return (SUCCESS);
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
 }

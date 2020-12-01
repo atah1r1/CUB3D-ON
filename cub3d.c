@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:07:34 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/01 14:55:54 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/01 17:04:27 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		main(int argc, char **argv)
 	{
 		if (argc == 3)
 		{
-			if (handle_save_arg(argv[2]) == SUCCESS)
+			if (!handle_save_arg(argv[2]))
 			{
 				save_found = 1;
 				start_program(argv[1]);
