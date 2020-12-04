@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:31:58 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/01 17:01:00 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/04 11:26:25 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		read_line(char *line)
 		return (set_error("CIEL RGB error!"));
 	else if (((line[0] == '1' || line[0] == ' ')
 		&& read_map_row(line) == ERROR))
-		return (set_error("map error!"));
+		return (set_error("Element / map error!"));
 	return (SUCCESS);
 }
 

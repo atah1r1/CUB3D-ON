@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:04:59 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/23 16:39:09 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/03 11:05:17 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int		read_resolution(char *line)
 		g_data->w_width = 3200;
 		g_data->w_height = 1800;
 	}
+	if (g_data->w_width <= 0 || g_data->w_height <= 0)
+		set_error("Width and height must be greather than 0");
 	++g_read_nb;
 	free(line);
 	return (parts_free(parts));
