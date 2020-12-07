@@ -6,7 +6,7 @@
 #    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/15 08:55:39 by atahiri           #+#    #+#              #
-#    Updated: 2020/12/07 14:36:24 by atahiri          ###   ########.fr        #
+#    Updated: 2020/12/07 19:14:32 by atahiri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC = *.c gnl/*.c read_file/*.c utils/*.c
 all:$(NAME)
 
 $(NAME):
-	@ $(CC) $(FLAGS) $(SRC) -o $(NAME) $(LIBS)
+	@ $(CC) $(FLAGS) $(SRC) -o $(NAME) $(LIBS) -g
 clean:
 	rm -rf *.o
 fclean: clean

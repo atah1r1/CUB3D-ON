@@ -6,17 +6,17 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:02:51 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/22 12:26:48 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/07 19:24:32 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		ft_atoi(const char *str)
+int64_t		ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int result;
+	int		i;
+	int64_t	sign;
+	int64_t result;
 
 	i = 0;
 	sign = 1;
