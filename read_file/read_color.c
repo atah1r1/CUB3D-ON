@@ -6,11 +6,27 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:50:25 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/24 12:54:40 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/07 12:21:06 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int		ft_find_comma(char *line)
+{
+	int i;
+	int nb;
+
+	i = 0;
+	nb = 0;
+	while (line[i])
+	{
+		if (line[i] == ',')
+			nb++;
+		i++;
+	}
+	return (nb);
+}
 
 int		read_color(char *line, t_color *color)
 {
@@ -20,6 +36,8 @@ int		read_color(char *line, t_color *color)
 	i = 0;
 	while (!(line[i] >= '0' && line[i] <= '9'))
 		i++;
+	if (ft_find_comma(line) > 2)
+		set_error("Error in Colors");
 	parts = ft_split(&line[i], ',');
 	if (parts_number(parts) != 3)
 		return (ERROR);

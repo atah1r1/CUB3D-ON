@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:31:58 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/04 11:26:25 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/07 11:51:46 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		read_line(char *line)
 		return (set_error("CIEL RGB error!"));
 	else if (((line[0] == '1' || line[0] == ' ')
 		&& read_map_row(line) == ERROR))
-		return (set_error("Element / map error!"));
+		return (set_error("(Missing / Duplicate)Element OR map error!"));
 	return (SUCCESS);
 }
 
@@ -60,6 +60,7 @@ int		ft_read(char *file_name)
 		return (ERROR);
 	if (g_player->player_found == 0)
 		set_error("Player not found");
+	check_map_opened(g_data);
 	close(fd);
 	return (SUCCESS);
 }

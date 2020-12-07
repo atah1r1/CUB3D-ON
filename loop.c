@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 23:26:13 by atahiri           #+#    #+#             */
-/*   Updated: 2020/11/30 14:46:30 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/04 17:21:24 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int		loop(void)
 {
-	move_player();
 	cast_rays();
 	three_d();
 	draw_sprites();
+	move_player();
 	if (save_found == 1)
 	{
 		bmp_file();

@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/03 10:33:03 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/07 11:48:48 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,4 +234,10 @@ void			*ft_memcpy(void *dest, const void *src, size_t n);
 int				ft_strcmp(char *s1, char *s2);
 int				bmp_file(void);
 int				handle_save_arg(char *str);
+
+void			check_map_opened(t_struct *data);
+int				check_element(t_struct *data, int i, int j);
+int				value_at(int i, int j, t_struct *data);
+int				valid_indices(t_struct *data, int x, int y);
+
 #endif
