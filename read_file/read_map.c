@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:46:14 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/07 11:47:43 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/07 14:34:00 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ int		init_map(char *line)
 	g_data->map[0].row = ft_strdup(line);
 	g_data->map[0].len = ft_strlen(line);
 	g_data->map_height = 1;
-	g_data->map->num_columns = 0;
 	free(line);
 	return (SUCCESS);
 }
 
-int		read_map_row(char *line)
+int		read_row(char *line)
 {
 	int		i;
 	t_map	*temp_map;
@@ -47,8 +46,6 @@ int		read_map_row(char *line)
 	g_data->map[i].len = ft_strlen(line);
 	if (player_pos(line, i) > 1)
 		set_error("Too many player in the map !");
-	g_data->map->num_columns = (g_data->map->num_columns > g_data->map[i].len)
-	? g_data->map->num_columns : g_data->map[i].len;
 	num_sprites(line);
 	free(line);
 	free(temp_map);

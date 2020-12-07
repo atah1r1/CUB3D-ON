@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:31:58 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/07 11:51:46 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/07 14:25:52 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,15 @@ int		read_line(char *line)
 {
 	if (ft_strncmp(line, "R ", 2) == 0 && read_resolution(line) == ERROR)
 		return (set_error("resolution error!"));
-	else if (ft_strncmp(line, "NO", 2) == 0
-		&& read_texture(line, &g_texture[0]) == ERROR)
+	else if (ft_strncmp(line, "NO", 2) == 0 && r_txt(line, &g_texture[1]) == 2)
 		return (set_error("NORTH error!"));
-	else if (ft_strncmp(line, "SO", 2) == 0
-		&& read_texture(line, &g_texture[1]) == ERROR)
+	else if (ft_strncmp(line, "SO", 2) == 0 && r_txt(line, &g_texture[0]) == 2)
 		return (set_error("SOUTH error!"));
-	else if (ft_strncmp(line, "WE", 2) == 0
-		&& read_texture(line, &g_texture[3]) == ERROR)
+	else if (ft_strncmp(line, "WE", 2) == 0 && r_txt(line, &g_texture[2]) == 2)
 		return (set_error("WEST error!"));
-	else if (ft_strncmp(line, "EA", 2) == 0
-		&& read_texture(line, &g_texture[2]) == ERROR)
+	else if (ft_strncmp(line, "EA", 2) == 0 && r_txt(line, &g_texture[3]) == 2)
 		return (set_error("EAST error!"));
-	else if (ft_strncmp(line, "S ", 2) == 0
-		&& read_texture(line, &g_texture[4]) == ERROR)
+	else if (ft_strncmp(line, "S ", 2) == 0 && r_txt(line, &g_texture[4]) == 2)
 		return (set_error("SPRITE error!"));
 	else if (ft_strncmp(line, "F ", 2) == 0
 		&& read_color(line, &(g_data->floor)) == ERROR)
@@ -37,8 +32,7 @@ int		read_line(char *line)
 	else if (ft_strncmp(line, "C ", 2) == 0
 		&& read_color(line, &(g_data->ceil)) == ERROR)
 		return (set_error("CIEL RGB error!"));
-	else if (((line[0] == '1' || line[0] == ' ')
-		&& read_map_row(line) == ERROR))
+	else if (((line[0] == '1' || line[0] == ' ') && read_row(line) == ERROR))
 		return (set_error("(Missing / Duplicate)Element OR map error!"));
 	return (SUCCESS);
 }

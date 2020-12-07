@@ -6,13 +6,13 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:03:44 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/07 12:06:38 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/07 14:25:58 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		read_texture(char *line, t_texture *txt)
+int		r_txt(char *line, t_texture *txt)
 {
 	int		i;
 	char	**parts;

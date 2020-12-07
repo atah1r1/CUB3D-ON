@@ -6,14 +6,14 @@
 #    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/15 08:55:39 by atahiri           #+#    #+#              #
-#    Updated: 2020/11/30 11:38:57 by atahiri          ###   ########.fr        #
+#    Updated: 2020/12/07 14:36:24 by atahiri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-NAME = Cub3d
+NAME = cub3D
 AR = ar
-LIBS = -lm -framework OpenGL -framework AppKit libs/libmlx.a
+LIBS = -l mlx -framework OpenGL -framework AppKit
 FLAGS = -Wall -Werror -Wextra
 SRC = *.c gnl/*.c read_file/*.c utils/*.c
 
@@ -27,6 +27,6 @@ fclean: clean
 	rm -rf $(NAME)
 re:fclean all
 build:re
-	./Cub3d map.cub
+	./cub3D map.cub
 norm:
 	norminette *.c gnl/*.c read_file/*.c utils/*.c
