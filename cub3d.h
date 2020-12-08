@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/07 19:26:42 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/08 14:09:41 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,8 +151,8 @@ typedef	struct			s_map
 
 typedef struct			s_struct
 {
-	int64_t				w_width;
-	int64_t				w_height;
+	int					w_width;
+	int					w_height;
 	void				*ptr;
 	void				*win;
 	void				*image3d;
@@ -208,7 +208,7 @@ int						set_error(char *message);
 int						handle_argv(char *str);
 char					**ft_split(const char *ss, char c);
 int						handle_color(t_color *color);
-int64_t					ft_atoi(const char *str);
+int						ft_atoi(const char *str);
 int						read_line(char *line);
 int						read_color(char *line, t_color *color);
 int						init_map(char *line);

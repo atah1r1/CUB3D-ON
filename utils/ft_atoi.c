@@ -6,13 +6,13 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:02:51 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/07 19:24:32 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/08 14:10:35 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int64_t		ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
 	int		i;
 	int64_t	sign;
@@ -21,11 +21,8 @@ int64_t		ft_atoi(const char *str)
 	i = 0;
 	sign = 1;
 	result = 0;
-	while (str[i] == ' ' ||
-			str[i] == '\t' ||
-			str[i] == '\n' ||
-			str[i] == '\v' ||
-			str[i] == '\r' || str[i] == '\f')
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+			|| str[i] == '\r' || str[i] == '\f')
 		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
@@ -37,6 +34,8 @@ int64_t		ft_atoi(const char *str)
 	{
 		result = result * 10 + str[i] - '0';
 		i++;
+		if (result > 20000)
+			return (result);
 	}
 	return (result * sign);
 }
