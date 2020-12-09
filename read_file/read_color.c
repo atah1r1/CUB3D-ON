@@ -6,11 +6,41 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:50:25 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/07 12:21:06 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/09 10:03:45 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int		check_character(char *s, char c)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			return (ERROR);
+		i++;
+	}
+	return (SUCCESS);
+}
+
+int		color_error(char *s)
+{
+	size_t	i;
+	char	*chr;
+
+	i = 0;
+	chr = "abcdefghijklmnopqrstuvwxyz";
+	while (i < ft_strlen(chr))
+	{
+		if (check_character(s, chr[i]) == ERROR)
+			set_error("Colors must be a digit !");
+		i++;
+	}
+	return (SUCCESS);
+}
 
 int		ft_find_comma(char *line)
 {
@@ -41,6 +71,9 @@ int		read_color(char *line, t_color *color)
 	parts = ft_split(&line[i], ',');
 	if (parts_number(parts) != 3)
 		return (ERROR);
+	color_error(parts[0]);
+	color_error(parts[1]);
+	color_error(parts[2]);
 	color->r = ft_atoi(parts[0]);
 	color->g = ft_atoi(parts[1]);
 	color->b = ft_atoi(parts[2]);
