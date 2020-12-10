@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 09:09:05 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/08 20:56:57 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/10 12:23:34 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdio.h>
 # include <limits.h>
 # include <stdint.h>
+# include <ctype.h>
 
 # define ESC 53
 # define R_LEFT 123

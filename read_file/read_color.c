@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:50:25 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/09 10:03:45 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/10 12:28:28 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		color_error(char *s)
 	char	*chr;
 
 	i = 0;
-	chr = "abcdefghijklmnopqrstuvwxyz";
+	chr = "abcdefghijklmnopqrstuvwxyz,./;'][=-";
 	while (i < ft_strlen(chr))
 	{
 		if (check_character(s, chr[i]) == ERROR)

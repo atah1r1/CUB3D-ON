@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:04:59 by atahiri           #+#    #+#             */
-/*   Updated: 2020/12/09 10:01:07 by atahiri          ###   ########.fr       */
+/*   Updated: 2020/12/10 12:27:55 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		resolution_error(char *s)
 	char	*chr;
 
 	i = 0;
-	chr = "abcdefghijklmnopqrstuvwxyz";
+	chr = "abcdefghijklmnopqrstuvwxyz,./;'][=-";
 	while (i < ft_strlen(chr))
 	{
 		if (check_chr(s, chr[i]) == ERROR)
