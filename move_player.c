@@ -23,8 +23,9 @@ void	move_player(void)
 		(g_player->walk_d * g_player->walk_spd);
 	ny = g_player->y + sinf(g_player->angle + g_player->side) *
 		(g_player->walk_d * g_player->walk_spd);
-	if (!(wall_check(nx, g_player->y)) && !(sprite_check(nx, g_player->y)))
-		g_player->x = nx;
-	if (!(wall_check(g_player->x, ny)) && !(sprite_check(g_player->x, ny)))
+	if (!(wall_check(nx, ny)) && !(sprite_check(nx, ny)))
+	{
 		g_player->y = ny;
+		g_player->x = nx;
+	}
 }

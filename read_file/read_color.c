@@ -63,8 +63,8 @@ int		read_color(char *line, t_color *color)
 	int		i;
 	char	**parts;
 
-	i = 0;
-	while (!(line[i] >= '0' && line[i] <= '9'))
+	i = 2;
+	while (line[i] == ' ')
 		i++;
 	if (ft_find_comma(line) > 2)
 		set_error("Error in Colors");

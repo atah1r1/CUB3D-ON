@@ -55,13 +55,15 @@ int		read_resolution(char *line)
 	resolution_error(parts[2]);
 	g_data->w_width = ft_atoi(parts[1]);
 	g_data->w_height = ft_atoi(parts[2]);
+	if (g_data->w_width <= 0)
+		set_error("Width must be greather than 0");
+	if (g_data->w_height <= 0)
+		set_error("height must be greather than 0");
 	if (g_data->w_width > 3200 || g_data->w_height > 1800)
 	{
 		g_data->w_width = 2560;
 		g_data->w_height = 1440;
 	}
-	if (g_data->w_width <= 0 || g_data->w_height <= 0)
-		set_error("Width and height must be greather than 0");
 	++g_read_nb;
 	free(line);
 	return (parts_free(parts));

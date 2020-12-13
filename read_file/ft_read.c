@@ -26,7 +26,7 @@ int		read_line(char *line)
 		return (set_error("EAST error!"));
 	else if (ft_strncmp(line, "S", 1) == 0 && r_txt(line, &g_texture[4]) == 2)
 		return (set_error("SPRITE error!"));
-	else if (ft_strncmp(line, "F", 1) == 0
+	else if (ft_strncmp(line, "F ", 2) == 0
 		&& read_color(line, &(g_data->floor)) == ERROR)
 		return (set_error("FLOOR RGB error!"));
 	else if (ft_strncmp(line, "C ", 2) == 0
@@ -54,6 +54,7 @@ int		ft_read(char *file_name)
 		return (ERROR);
 	if (g_player->player_found == 0)
 		set_error("Player not found");
+	printf("%d", g_read_nb);
 	check_map_opened(g_data);
 	close(fd);
 	return (SUCCESS);
