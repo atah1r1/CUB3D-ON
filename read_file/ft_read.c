@@ -56,7 +56,6 @@ int		ft_read(char *file_name)
 		return (ERROR);
 	if (g_player->player_found == 0)
 		set_error("Player not found");
-	printf("%d", g_read_nb);
 	check_map_opened(g_data);
 	close(fd);
 	return (SUCCESS);
