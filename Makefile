@@ -20,7 +20,7 @@ SRC = *.c gnl/*.c read_file/*.c utils/*.c
 all:$(NAME)
 
 $(NAME):
-	@ $(CC) $(FLAGS) $(SRC) -o $(NAME) $(LIBS)
+	@ $(CC) $(FLAGS) $(SRC) -o $(NAME) $(LIBS) -g
 clean:
 	rm -rf *.o
 fclean: clean

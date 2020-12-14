@@ -14,6 +14,8 @@
 
 int		read_line(char *line)
 {
+	if (line[0] != '\0')
+			g_read_nb++;
 	if (ft_strncmp(line, "R", 1) == 0 && read_resolution(line) == ERROR)
 		return (set_error("resolution error!"));
 	else if (ft_strncmp(line, "NO", 2) == 0 && r_txt(line, &g_texture[1]) == 2)

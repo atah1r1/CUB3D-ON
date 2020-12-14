@@ -64,7 +64,7 @@ int		read_resolution(char *line)
 		g_data->w_width = 2560;
 		g_data->w_height = 1440;
 	}
-	++g_read_nb;
+	// ++g_read_nb;
 	free(line);
 	return (parts_free(parts));
 }

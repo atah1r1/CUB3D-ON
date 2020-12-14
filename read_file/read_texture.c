@@ -22,7 +22,7 @@ int		r_txt(char *line, t_texture *txt)
 	if (parts_number(parts) != 2)
 		return (ERROR);
 	txt->path = ft_strdup(parts[1]);
-	++g_read_nb;
+	// ++g_read_nb;
 	free(line);
 	return (parts_free(parts));
 }

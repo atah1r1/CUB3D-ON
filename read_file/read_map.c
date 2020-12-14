@@ -29,7 +29,7 @@ int		read_row(char *line)
 	t_map	*temp_map;
 
 	i = 0;
-	if (g_read_nb != 8)
+	if (g_read_nb != 9 + g_data->map_height)
 		return (ERROR);
 	if (g_data->map == NULL)
 		return (init_map(line));
