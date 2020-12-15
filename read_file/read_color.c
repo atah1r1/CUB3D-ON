@@ -80,7 +80,6 @@ int		read_color(char *line, t_color *color)
 	if ((color->r < 0 || color->r > 255) ||
 		(color->g < 0 || color->g > 255) || (color->b < 0 || color->b > 255))
 		set_error("RGB must be in range[0-255]");
-	// ++g_read_nb;
 	free(line);
 	return (parts_free(parts));
 }
