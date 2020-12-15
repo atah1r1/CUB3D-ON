@@ -61,7 +61,7 @@ void	check_map_opened(t_struct *data)
 		{
 			if (!(data->map[i].row[j] == '1' || data->map[i].row[j] == ' ')
 					&& !check_element(data, i, j))
-				set_error("Map Opened Asssat !!");
+				set_error("Map Opened !!");
 		}
 	}
 }

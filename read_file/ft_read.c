@@ -15,7 +15,7 @@
 int		read_line(char *line)
 {
 	if (line[0] != '\0')
-			g_read_nb++;
+		g_read_nb++;
 	if (ft_strncmp(line, "R", 1) == 0 && read_resolution(line) == ERROR)
 		return (set_error("resolution error!"));
 	else if (ft_strncmp(line, "NO", 2) == 0 && r_txt(line, &g_texture[1]) == 2)
@@ -34,7 +34,7 @@ int		read_line(char *line)
 	else if (ft_strncmp(line, "C ", 2) == 0
 		&& read_color(line, &(g_data->ceil)) == ERROR)
 		return (set_error("CIEL RGB error!"));
-	else if (((line[0] == '1' || line[0] == ' ') && read_row(line) == ERROR))
+	else if ((line[0] == '1' || line[0] == ' ') && read_row(line) == ERROR)
 		return (set_error("(Missing / Duplicate)Element OR map error!"));
 	return (SUCCESS);
 }
